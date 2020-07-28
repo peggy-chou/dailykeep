@@ -152,7 +152,7 @@ export default {
   cursor: pointer;
 }
 .ctrl .less:hover, .ctrl .add:hover {
-  color: #DA9554;
+  color: #FF6347;
 }
 
 .timer {
@@ -162,7 +162,7 @@ export default {
   position: relative;
   box-sizing: border-box;
   border-radius: 50%;
-  border: 10px solid rgb(218, 149, 84);
+  border: 10px solid #FF6347;
   overflow: hidden;
   z-index: 10;
   display: flex;
@@ -198,7 +198,7 @@ export default {
   left: 0;
   z-index: -1;
   height: 10%;
-  background-color: #DA9554;
+  background-color: #FF6347;
 }
 .timer span.pause-bg {
   position: absolute;
