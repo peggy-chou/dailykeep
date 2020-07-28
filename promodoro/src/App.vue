@@ -1,12 +1,26 @@
 <template>
   <div id="app">
+    <router-link :to="{name: 'HelloWorld'}" >hello</router-link>
+    <router-link :to="{name: 'pomodoro'}" >pomodoro-2</router-link>
+    <router-link :to="{name: 'weather'}" >local weather</router-link>
     <router-view/>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  methods: {
+    routerPush(routerName) {
+      this.$router.push({
+        name: routerName
+      })    
+    }
+  },
+  watch: {
+    $route(to, from) {
+    }
+},
 }
 </script>
 

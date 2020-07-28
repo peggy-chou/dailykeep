@@ -3,7 +3,7 @@
     <h1 class="cover-heading">Pomodoro Clock</h1>
     <div class="appBox" id="pomoApp">
       <div class="pBox" @click="start" title="Click to start">
-        <div class="timer">{{ stateMsg }}</br>{{ display }}</div>
+        <div class="timer">{{ stateMsg }}{{ display }}</div>
         <div class="hover-play" v-bind:class="{ 'hover-playing': state}">
           <i class="fa fa-play-circle"></i>
         </div>

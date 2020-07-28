@@ -2,7 +2,6 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
-    <pomodoro-clock></pomodoro-clock>
     <ul>
       <li>
         <router-link :to="{name: 'pomodoroclock'}">
@@ -10,12 +9,9 @@
         </router-link>
       </li>
       <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
+        <router-link :to="{name: 'pomodoro'}">
+          pomodoro
+        </router-link>
       </li>
       <li>
         <a
