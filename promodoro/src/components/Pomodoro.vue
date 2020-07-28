@@ -3,7 +3,7 @@
     <h1 class="title">Pomodoro Clock</h1>
     <div class="ctrl">
       <div class="ctrl-block">
-        <p class="text">BREAK LENGTH</p>
+        <p class="text">BREAK TIME</p>
         <div class="break">
           <div class="less" @click="changeTime('break', -1)">-</div>
           <div class="num">{{ breakLength }}</div>
@@ -11,7 +11,7 @@
         </div>
       </div>
       <div class="ctrl-block">
-        <p class="text">SESSION LENGTH</p>
+        <p class="text">SESSION TIME</p>
         <div class="session">
           <div class="less" @click="changeTime('session', -1)">-</div>
           <div class="num">{{ sessionLength }}</div>
@@ -21,7 +21,11 @@
     </div>
     <div class="timer" @click="setTime" :class="{ break: sessionTime === 0 }">
       <div class="status">{{ status }}</div>
-      <div class="time">{{ clock }}</div><span class="fill" :style="{ height: fill }"></span>
+      <div class="time">{{ clock }}</div>
+      <span class="fill" :style="{ height: fill }"></span>
+      <span v-show="!timerStart" class="pause-bg">
+        <div class="play-button"></div>
+      </span>
     </div>
   </div>
 </template>
@@ -43,13 +47,11 @@ export default {
       if (this.sessionTime > 0) {
         let min = ('0' + parseInt(this.sessionTime / 60, 10)).slice(-2);
         let sec = ('0' + this.sessionTime % 60).slice(-2);
-
         return `${min}:${sec}`;
       } else
       {
         let min = ('0' + parseInt(this.breakTime / 60, 10)).slice(-2);
         let sec = ('0' + this.breakTime % 60).slice(-2);
-
         return `${min}:${sec}`;
       }
     },
@@ -106,11 +108,11 @@ export default {
       }, 1000);
     },
     setTime() {
-      if (!this.timerStart) {
-        this.timer();
+      if (this.timerStart) {
+        clearInterval(this.time);
       } else
       {
-        clearInterval(this.time);
+        this.timer();
       }
       this.timerStart = !this.timerStart;
     } 
@@ -119,15 +121,6 @@ export default {
 </script>
 
 <style>
-html, body, #pomodoro {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
 .title {
   font-size: 3em;
   margin: 0px auto 10px;
@@ -135,6 +128,7 @@ html, body, #pomodoro {
 
 .ctrl {
   display: flex;
+  margin: 0px 50px;
 }
 .ctrl .break, .ctrl .session {
   display: flex;
@@ -158,17 +152,17 @@ html, body, #pomodoro {
   cursor: pointer;
 }
 .ctrl .less:hover, .ctrl .add:hover {
-  color: #00ADB5;
+  color: #DA9554;
 }
 
 .timer {
   width: 300px;
   height: 300px;
-  margin: 20px 0px;
+  margin: 20px 30px;
   position: relative;
   box-sizing: border-box;
   border-radius: 50%;
-  border: 10px solid #00ADB5;
+  border: 10px solid rgb(218, 149, 84);
   overflow: hidden;
   z-index: 10;
   display: flex;
@@ -204,6 +198,30 @@ html, body, #pomodoro {
   left: 0;
   z-index: -1;
   height: 10%;
-  background-color: #00ADB5;
+  background-color: #DA9554;
+}
+.timer span.pause-bg {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  height: 10%;
+  background-color: #777777;
+  opacity: 0.5;
+  height: 100%;
+}
+
+.play-button{
+  position: relative;
+  left: 115px;
+  top: 115px;
+  margin: auto;
+  box-sizing: border-box;
+  z-index: 2;
+  height: 74px;
+  border-style: solid;
+  border-width: 37px 0 37px 60px;
+  border-color: transparent transparent transparent black;
 }
 </style>
