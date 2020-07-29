@@ -4,6 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+import Lodash from 'lodash'
+import './images/icons/index.js'
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

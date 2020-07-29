@@ -1,8 +1,10 @@
 <template>
   <div id="app">
-    <router-link :to="{name: 'HelloWorld'}" >hello</router-link>
-    <router-link :to="{name: 'pomodoro'}" >pomodoro-2</router-link>
-    <router-link :to="{name: 'weather'}" >local weather</router-link>
+    <div class="m-2">
+      <router-link :to="{name: 'HelloWorld'}" >hello</router-link>
+      <router-link :to="{name: 'pomodoro'}" >pomodoro-2</router-link>
+      <router-link :to="{name: 'weather'}" >local weather</router-link>
+    </div>
     <router-view/>
   </div>
 </template>
@@ -25,6 +27,8 @@ export default {
 </script>
 
 <style>
+@import '../static/css/main.css';
+
 html, body {
   width: 100%;
   height: 100%;

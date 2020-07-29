@@ -11,7 +11,7 @@
         </div>
       </div>
       <div class="ctrl-block">
-        <p class="text">SESSION TIME</p>
+        <p class="text">WORK TIME</p>
         <div class="session">
           <div class="less" @click="changeTime('session', -1)">-</div>
           <div class="num">{{ sessionLength }}</div>
@@ -74,8 +74,8 @@ export default {
 
         return `${this.breakTime / max * 100}%`;
       }
-    } },
-
+    } 
+  },
   methods: {
     changeTime(item, sec) {
       if (!this.timerStart) {
@@ -171,10 +171,10 @@ export default {
   flex-direction: column;
 }
 .timer.break {
-  border: 10px solid #FF7600;
+  border: 10px solid #9ACD32;
 }
 .timer.break span.fill {
-  background-color: #FF7600;
+  background-color: #9ACD32;
 }
 .timer:before {
   content: '';
